@@ -13,6 +13,17 @@ from .utils import check_eligibility
 
 # Create your views here.
 
+@api_view(['GET'])
+def index(request):
+    api = {
+        'register': 'http://localhost:8000/register/',
+        'customers': 'http://localhost:8000/customers/',
+        'create-loan': 'http://localhost:8000/create-loan/',
+        'view-loan': 'http://localhost:8000/view-loan/<int:pk>/',
+        'view-loan/customer': 'http://localhost:8000/view-loan/customer/<int:pk>/',        
+    }
+    return Response(api)
+
 class CustomerCreateAPIView(generics.CreateAPIView):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer

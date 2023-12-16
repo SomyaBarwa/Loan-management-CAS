@@ -7,6 +7,7 @@ from . import views
 routers = routers.DefaultRouter()
 
 urlpatterns = [
+    path('', views.index),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('register/', views.CustomerCreateAPIView.as_view()),
     path('customers/', views.CustomerListAPIView.as_view()),

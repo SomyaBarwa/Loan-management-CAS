@@ -60,7 +60,8 @@ class LoanCreateAPIView(APIView):
                 loan_instance.interest_rate = corrected_interest_rate
                 monthly_payment = int(round(loan_amount * (1 + corrected_interest_rate/100) / int(request.data['tenure'])))
                 #print("Monthly payment2:", loan_instance.monthly_payment)
-                loan_instance.save()
+                if approval:
+                    loan_instance.save()
 
                 loan_response = {
                     'loan_instance': loan_instance.data,
